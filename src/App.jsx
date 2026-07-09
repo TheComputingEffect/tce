@@ -49,15 +49,15 @@ function PageLoader() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        color: '#BC6C25',
+        color: 'var(--color-orange)',
       }}
     >
       <div
         style={{
           width: '40px',
           height: '40px',
-          border: '3px solid rgba(188,108,37,0.2)',
-          borderTopColor: '#BC6C25',
+          border: '3px solid rgba(255, 90, 0, 0.15)',
+          borderTopColor: 'var(--color-orange)',
           borderRadius: '50%',
           animation: 'spin-slow 0.8s linear infinite',
         }}

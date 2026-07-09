@@ -63,16 +63,16 @@ export default function PrivacyPolicy() {
       }}>
         <div className="container" style={{ padding: '3rem 1.5rem' }}>
           <motion.div variants={fadeUp} initial="hidden" animate="visible" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem', fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
-            <Link to="/" style={{ color: '#BC6C25' }}>Home</Link>
+            <Link to="/" style={{ color: 'var(--color-orange)' }}>Home</Link>
             <ChevronRight size={13} />
             <span>Privacy Policy</span>
           </motion.div>
           <motion.h1 variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.1 }}
-            style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.75rem' }}>
+            style={{ fontFamily: "var(--font-display)", fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.75rem', letterSpacing: '-0.02em' }}>
             Privacy Policy
           </motion.h1>
           <motion.p variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.2 }}
-            style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>
+            style={{ color: 'var(--text-muted)', fontSize: '0.875rem', fontFamily: 'var(--font-body)' }}>
             Last Updated: June 2025 · Effective Date: June 2025
           </motion.p>
         </div>
@@ -82,8 +82,8 @@ export default function PrivacyPolicy() {
       <section className="section-py">
         <div className="container" style={{ maxWidth: '760px' }}>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewport}
-            style={{ background: 'rgba(188,108,37,0.05)', border: '1px solid rgba(188,108,37,0.15)', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem' }}>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9375rem', lineHeight: 1.75 }}>
+            style={{ background: 'rgba(255, 90, 0, 0.04)', border: '1px solid rgba(255, 90, 0, 0.15)', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem' }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9375rem', lineHeight: 1.75, fontFamily: 'var(--font-body)', margin: 0 }}>
               At The Computing Effect, we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or engage with our services. Please read this policy carefully.
             </p>
           </motion.div>
@@ -98,8 +98,8 @@ export default function PrivacyPolicy() {
               transition={{ delay: i * 0.05 }}
               style={{ marginBottom: '2rem', paddingBottom: '2rem', borderBottom: 'var(--border-subtle)' }}
             >
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.2rem', color: 'var(--text-primary)', marginBottom: '0.875rem' }}>{title}</h2>
-              <p style={{ color: 'var(--text-secondary)', lineHeight: 1.85, fontSize: '0.9375rem' }}>{content}</p>
+              <h2 style={{ fontFamily: "var(--font-display)", fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.875rem' }}>{title}</h2>
+              <p style={{ color: 'var(--text-secondary)', lineHeight: 1.85, fontSize: '0.9375rem', fontFamily: 'var(--font-body)', margin: 0 }}>{content}</p>
             </motion.div>
           ))}
         </div>

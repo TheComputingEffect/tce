@@ -1,24 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Sun, Moon, Menu, X, 
-  Home, Users, Layers, LayoutGrid, Mail 
-} from 'lucide-react';
-import { useTheme } from '../../context/ThemeContext';
-import LogoFull from '../../assets/logo/LogoFull';
-import { PrimaryBtn } from '../ui/Button';
+import { Menu, X, Home, Users, Layers, LayoutGrid, Mail, ArrowUpRight } from 'lucide-react';
+import LogoIcon from '../../assets/logo/LogoIcon';
 
 const NAV_LINKS = [
-  { label: 'Home', to: '/', icon: <Home size={18} /> },
-  { label: 'About', to: '/about', icon: <Users size={18} /> },
-  { label: 'Services', to: '/services', icon: <Layers size={18} /> },
-  { label: 'Portfolio', to: '/portfolio', icon: <LayoutGrid size={18} /> },
-  { label: 'Contact', to: '/contact', icon: <Mail size={18} /> },
+  { label: 'Home', to: '/', icon: <Home size={16} /> },
+  { label: 'About', to: '/about', icon: <Users size={16} /> },
+  { label: 'Services', to: '/services', icon: <Layers size={16} /> },
+  { label: 'Portfolio', to: '/portfolio', icon: <LayoutGrid size={16} /> },
+  { label: 'Contact', to: '/contact', icon: <Mail size={16} /> },
 ];
 
 export default function Navbar() {
-  const { isDark, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
@@ -31,7 +25,7 @@ export default function Navbar() {
 
   // Detect scroll
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 30);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -42,43 +36,51 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
-  const navbarBg = scrolled
-    ? isDark
-      ? 'rgba(30,21,15,0.92)'
-      : 'rgba(250,246,240,0.88)'
-    : 'transparent';
-
   return (
     <>
       <header
         style={{
           position: 'fixed',
-          top: 0,
+          top: scrolled ? '1rem' : '0',
           left: 0,
           right: 0,
           zIndex: 50,
-          background: navbarBg,
-          backdropFilter: scrolled ? 'blur(16px)' : 'none',
-          WebkitBackdropFilter: scrolled ? 'blur(16px)' : 'none',
-          borderBottom: scrolled ? 'var(--border-subtle)' : '1px solid transparent',
-          transition: 'all 0.3s ease',
-          boxShadow: scrolled ? '0 4px 24px rgba(74,55,40,0.08)' : 'none',
+          display: 'flex',
+          justifyContent: 'center',
+          padding: '0 1rem',
+          transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
         }}
       >
-        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '72px' }}>
+        <div
+          style={{
+            width: '100%',
+            maxWidth: scrolled ? '1000px' : 'var(--container-max)',
+            background: scrolled ? 'rgba(26, 13, 14, 0.75)' : 'transparent',
+            border: scrolled ? '1px solid rgba(255, 90, 0, 0.15)' : '1px solid transparent',
+            borderRadius: scrolled ? '100px' : '0',
+            padding: scrolled ? '0.5rem 2rem' : '1rem 1.5rem',
+            backdropFilter: scrolled ? 'blur(16px)' : 'none',
+            WebkitBackdropFilter: scrolled ? 'blur(16px)' : 'none',
+            boxShadow: scrolled ? '0 12px 40px rgba(20,9,10,0.3)' : 'none',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            height: '64px',
+            transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+          }}
+        >
           {/* Logo Column */}
-          <div style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center' }}>
-            <Link to="/" aria-label="The Computing Effect — Home">
-              <LogoFull height={38} />
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <Link to="/" aria-label="The Computing Effect — Home" className="flex items-center">
+              <LogoIcon size={36} className="hover:scale-105 transition-transform duration-200" />
             </Link>
           </div>
 
-          {/* Desktop Nav Column (Centered) - hidden on mobile (no flex styled inline) */}
-          <nav 
-            className="hidden md:flex items-center gap-6" 
-            style={{ 
-              flex: '1 1 auto', 
-              justifyContent: 'center' 
+          {/* Desktop Nav Links */}
+          <nav
+            className="hidden md:flex items-center gap-6"
+            style={{
+              justifyContent: 'center',
             }}
           >
             {NAV_LINKS.map(({ label, to }) => (
@@ -87,13 +89,13 @@ export default function Navbar() {
                 to={to}
                 end={to === '/'}
                 style={({ isActive }) => ({
-                  fontFamily: "'Inter', sans-serif",
-                  fontWeight: isActive ? 600 : 500,
-                  fontSize: '0.9rem',
-                  color: isActive ? '#BC6C25' : 'var(--text-primary)',
-                  padding: '0.35rem 0.5rem',
+                  fontFamily: "var(--font-body)",
+                  fontWeight: isActive ? 700 : 500,
+                  fontSize: '0.85rem',
+                  color: isActive ? 'var(--color-orange)' : 'rgba(255, 248, 241, 0.75)',
+                  padding: '0.4rem 0.75rem',
                   position: 'relative',
-                  transition: 'all 0.25s ease',
+                  transition: 'color 0.25s ease',
                   textDecoration: 'none',
                 })}
               >
@@ -109,8 +111,9 @@ export default function Navbar() {
                           left: '8px',
                           right: '8px',
                           height: '2px',
-                          background: '#BC6C25',
+                          background: 'var(--color-orange)',
                           borderRadius: '2px',
+                          boxShadow: '0 0 10px rgba(255, 90, 0, 0.5)',
                         }}
                         transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                       />
@@ -121,65 +124,60 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Right Column (CTA + Toggle) */}
-          <div style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '0.75rem' }}>
-            {/* Theme toggle */}
-            <button
-              onClick={toggleTheme}
-              aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-              style={{
-                width: '38px',
-                height: '38px',
-                borderRadius: '50%',
-                border: '1.5px solid var(--border-color)',
-                background: 'var(--bg-card)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-                color: 'var(--text-primary)',
-                transition: 'all 0.2s ease',
-                flexShrink: 0,
-              }}
-            >
-              {isDark ? <Sun size={17} /> : <Moon size={17} />}
-            </button>
-
-            {/* CTA — hidden on small mobile */}
+          {/* CTA Links */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <div className="hidden sm:block">
-              <PrimaryBtn to="/contact" style={{ padding: '0.6rem 1.25rem', fontSize: '0.875rem' }}>
-                Get a Consultation
-              </PrimaryBtn>
+              <Link
+                to="/contact"
+                style={{
+                  background: 'rgba(255, 90, 0, 0.08)',
+                  border: '1px solid rgba(255, 90, 0, 0.2)',
+                  color: '#fff',
+                  borderRadius: '100px',
+                  padding: '0.5rem 1.25rem',
+                  fontSize: '0.8rem',
+                  fontWeight: 700,
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  transition: 'all 0.2s',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.background = 'var(--color-orange)'; }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255, 90, 0, 0.08)'; }}
+              >
+                Get Started <ArrowUpRight size={14} />
+              </Link>
             </div>
 
-            {/* Hamburger - displays flex on mobile only, hides on desktop */}
+            {/* Mobile hamburger menu */}
             <button
               onClick={() => setMenuOpen(true)}
               aria-label="Open menu"
               className="md:hidden flex"
               style={{
-                width: '38px',
-                height: '38px',
-                borderRadius: '8px',
-                border: '1.5px solid var(--border-color)',
-                background: 'var(--bg-card)',
+                width: '36px',
+                height: '36px',
+                borderRadius: '50%',
+                border: '1px solid rgba(255, 248, 241, 0.15)',
+                background: 'rgba(255, 248, 241, 0.03)',
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: 'pointer',
-                color: 'var(--text-primary)',
+                color: '#FFF8F1',
               }}
             >
-              <Menu size={20} />
+              <Menu size={18} />
             </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile Off-Canvas Side Navigation Menu */}
+      {/* Mobile Off-Canvas Drawer */}
       <AnimatePresence>
         {menuOpen && (
           <>
-            {/* Dark Semi-Transparent Backdrop */}
+            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -188,70 +186,68 @@ export default function Navbar() {
               style={{
                 position: 'fixed',
                 inset: 0,
-                background: 'rgba(30, 21, 15, 0.4)',
-                backdropFilter: 'blur(4px)',
-                WebkitBackdropFilter: 'blur(4px)',
+                background: 'rgba(20, 9, 10, 0.6)',
+                backdropFilter: 'blur(8px)',
+                WebkitBackdropFilter: 'blur(8px)',
                 zIndex: 998,
               }}
             />
 
-            {/* Premium Off-Canvas Side Drawer */}
+            {/* Drawer */}
             <motion.div
               ref={menuRef}
-              className="mobile-nav-drawer"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 180 }}
+              transition={{ type: 'spring', damping: 26, stiffness: 200 }}
               style={{
                 position: 'fixed',
                 top: 0,
                 right: 0,
                 bottom: 0,
                 width: '80%',
-                maxWidth: '350px',
+                maxWidth: '320px',
                 height: '100vh',
-                background: 'var(--bg-card)',
-                borderLeft: 'var(--border-subtle)',
-                boxShadow: '-8px 0 32px rgba(74, 55, 40, 0.12)',
+                background: '#1A0D0E',
+                borderLeft: '1px solid rgba(255, 90, 0, 0.12)',
+                boxShadow: '-10px 0 40px rgba(20,9,10,0.4)',
                 zIndex: 999,
                 display: 'flex',
                 flexDirection: 'column',
-                padding: '1.5rem 1.5rem 2.5rem 1.5rem',
+                padding: '2rem 1.5rem',
               }}
             >
-              {/* Top Section: Logo & Close Button */}
+              {/* Drawer header */}
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2.5rem' }}>
-                <LogoFull height={32} />
+                <LogoIcon size={32} />
                 <button
                   onClick={() => setMenuOpen(false)}
                   aria-label="Close menu"
                   style={{
-                    width: '36px',
-                    height: '36px',
-                    borderRadius: '8px',
-                    border: '1.5px solid var(--border-color)',
-                    background: 'var(--bg-page)',
+                    width: '32px',
+                    height: '32px',
+                    borderRadius: '50%',
+                    border: '1px solid rgba(255, 248, 241, 0.15)',
+                    background: 'rgba(255, 248, 241, 0.03)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     cursor: 'pointer',
-                    color: 'var(--text-primary)',
+                    color: '#FFF8F1',
                   }}
                 >
-                  <X size={18} />
+                  <X size={16} />
                 </button>
               </div>
 
-              {/* Middle Section: Navigation links with icons */}
-              <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', flex: 1 }}>
+              {/* Navigation list */}
+              <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', flex: 1 }}>
                 {NAV_LINKS.map(({ label, to, icon }, i) => (
                   <motion.div
                     key={to}
-                    initial={{ opacity: 0, x: 20 }}
+                    initial={{ opacity: 0, x: 15 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05 }}
-                    whileTap={{ scale: 0.98 }}
                   >
                     <NavLink
                       to={to}
@@ -259,38 +255,51 @@ export default function Navbar() {
                       style={({ isActive }) => ({
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '1rem',
-                        fontFamily: "'Inter', sans-serif",
-                        fontWeight: isActive ? 600 : 500,
-                        fontSize: '1.05rem',
-                        color: isActive ? '#BC6C25' : 'var(--text-primary)',
-                        padding: '0.8rem 1rem',
-                        borderRadius: '10px',
-                        background: isActive ? 'rgba(188,108,37,0.08)' : 'transparent',
+                        gap: '0.75rem',
+                        fontFamily: 'var(--font-body)',
+                        fontWeight: isActive ? 700 : 500,
+                        fontSize: '1rem',
+                        color: isActive ? 'var(--color-orange)' : 'rgba(255,248,241,0.7)',
+                        padding: '0.75rem 1rem',
+                        borderRadius: '12px',
+                        background: isActive ? 'rgba(255, 90, 0, 0.08)' : 'transparent',
+                        border: isActive ? '1px solid rgba(255, 90, 0, 0.15)' : '1px solid transparent',
                         textDecoration: 'none',
-                        transition: 'all 0.2s ease',
+                        transition: 'all 0.25s ease',
                       })}
                       className="mobile-nav-link"
                     >
-                      <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        {icon}
-                      </span>
+                      <span style={{ color: 'var(--color-orange)' }}>{icon}</span>
                       <span>{label}</span>
                     </NavLink>
                   </motion.div>
                 ))}
               </nav>
 
-              {/* Bottom Section: Primary CTA Button */}
-              <motion.div 
-                initial={{ opacity: 0, y: 15 }}
+              {/* CTA Drawer button */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.35 }}
+                transition={{ delay: 0.3 }}
                 style={{ marginTop: 'auto' }}
               >
-                <PrimaryBtn to="/contact" style={{ width: '100%', justifyContent: 'center', padding: '0.875rem' }}>
-                  Get a Consultation
-                </PrimaryBtn>
+                <Link
+                  to="/contact"
+                  style={{
+                    background: 'var(--color-orange)',
+                    color: '#fff',
+                    textDecoration: 'none',
+                    borderRadius: '12px',
+                    padding: '0.875rem',
+                    fontSize: '0.9rem',
+                    fontWeight: 700,
+                    display: 'block',
+                    textAlign: 'center',
+                    boxShadow: '0 8px 24px rgba(255, 90, 0, 0.2)',
+                  }}
+                >
+                  Request Consultation
+                </Link>
               </motion.div>
             </motion.div>
           </>

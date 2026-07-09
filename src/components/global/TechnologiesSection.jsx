@@ -30,15 +30,14 @@ const ROW_4 = [...TECH_LOGOS.slice(12), ...TECH_LOGOS.slice(0, 4)];
 
 // ── Stats data ──────────────────────────────────────────────────────────────
 const STATS = [
-  { value: '10+', label: 'Happy Clients', bgColor: 'rgba(34, 197, 94, 0.10)', numColor: '#22C55E' },
-  { value: '05+', label: 'Projects Delivered', bgColor: 'rgba(234, 179, 8, 0.10)', numColor: '#EAB308' },
-  { value: '03+', label: 'Team Members', bgColor: 'rgba(239, 68, 68, 0.10)', numColor: '#EF4444' },
-  { value: '06+', label: 'Services Offered', bgColor: 'rgba(59, 130, 246, 0.10)', numColor: '#3B82F6' },
+  { value: '10+', label: 'Happy Clients', bgColor: 'rgba(34, 197, 94, 0.04)', numColor: '#22C55E' }, // TODO: client to confirm real number
+  { value: '12+', label: 'Projects Built', bgColor: 'rgba(255, 90, 0, 0.04)', numColor: '#FF5A00' }, // TODO: client to confirm real number
+  { value: '3+', label: 'Developers', bgColor: 'rgba(210, 134, 26, 0.04)', numColor: '#D2861A' }, // TODO: client to confirm real number
+  { value: '100%', label: 'On-Time Launch', bgColor: 'rgba(34, 197, 94, 0.04)', numColor: '#22C55E' },
 ];
 
 // ── Single marquee row ──────────────────────────────────────────────────────
 function MarqueeRow({ logos, direction = 'left', speed = 30 }) {
-  // Duplicate logos for seamless infinite loop
   const duplicated = [...logos, ...logos, ...logos];
   const animationName = direction === 'left' ? 'marquee-left' : 'marquee-right';
   const duration = `${speed}s`;
@@ -69,7 +68,7 @@ function MarqueeRow({ logos, direction = 'left', speed = 30 }) {
               height: '72px',
               background: 'var(--bg-card)',
               borderRadius: '14px',
-              boxShadow: '0 2px 12px rgba(74, 55, 40, 0.06)',
+              boxShadow: '0 2px 12px rgba(43, 18, 0, 0.04)',
               border: 'var(--border-subtle)',
               display: 'flex',
               alignItems: 'center',
@@ -110,9 +109,9 @@ function StatsCard() {
         width: '320px',
         maxWidth: '90%',
         background: 'var(--bg-card)',
-        border: '2px dashed rgba(188, 108, 37, 0.30)',
+        border: '2px dashed rgba(255, 90, 0, 0.25)',
         borderRadius: '20px',
-        boxShadow: '0 20px 60px rgba(74, 55, 40, 0.15)',
+        boxShadow: '0 20px 60px rgba(43, 18, 0, 0.12)',
         overflow: 'hidden',
       }}
     >
@@ -137,7 +136,7 @@ function StatsCard() {
           >
             <div
               style={{
-                fontFamily: "'Playfair Display', serif",
+                fontFamily: "var(--font-display)",
                 fontSize: '1.75rem',
                 fontWeight: 800,
                 color: numColor,
@@ -171,18 +170,28 @@ function StatsCard() {
             width: '52px',
             height: '52px',
             borderRadius: '50%',
-            background: '#BC6C25',
+            background: '#FF5A00',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            boxShadow: '0 4px 16px rgba(188, 108, 37, 0.35)',
+            boxShadow: '0 4px 16px rgba(255, 90, 0, 0.35)',
             zIndex: 5,
             border: '3px solid var(--bg-card)',
           }}
         >
-          <svg width="24" height="24" viewBox="0 0 80 80" fill="none">
-            <path d="M36 28C29.373 28 24 33.373 24 40C24 46.627 29.373 52 36 52C39.314 52 42.314 50.686 44.485 48.515" stroke="#EAD7BB" strokeWidth="5" strokeLinecap="round" fill="none"/>
-            <path d="M48 28H56M48 28V52M48 52H56M48 40H54" stroke="#EAD7BB" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+          <svg width="28" height="28" viewBox="0 0 100 100" fill="none">
+            <path d="M 75 30 A 35 35 0 1 0 75 70" stroke="#FF5A00" strokeWidth="8" strokeLinecap="round" fill="none" />
+            <path d="M 34 32 H 60" stroke="#FFF8F1" strokeWidth="7" strokeLinecap="round" fill="none" />
+            <path d="M 47 32 V 55" stroke="#FFF8F1" strokeWidth="7" strokeLinecap="round" fill="none" />
+            <path d="M 47 55 C 47 62, 36 62, 36 68" stroke="#FFF8F1" strokeWidth="6" strokeLinecap="round" fill="none" />
+            <circle cx="36" cy="72" r="5" fill="#FFF8F1" />
+            <path d="M 47 55 V 70" stroke="#FFF8F1" strokeWidth="6" strokeLinecap="round" fill="none" />
+            <circle cx="47" cy="74.5" r="5" fill="#FFF8F1" />
+            <path d="M 47 55 C 47 62, 58 62, 58 68" stroke="#FFF8F1" strokeWidth="6" strokeLinecap="round" fill="none" />
+            <circle cx="58" cy="72" r="5" fill="#FFF8F1" />
+            <path d="M 54 39 H 64" stroke="#FF5A00" strokeWidth="6" strokeLinecap="round" fill="none" />
+            <path d="M 54 48 H 62" stroke="#FF5A00" strokeWidth="6" strokeLinecap="round" fill="none" />
+            <path d="M 54 57 H 64" stroke="#FF5A00" strokeWidth="6" strokeLinecap="round" fill="none" />
           </svg>
         </div>
       </div>
@@ -201,7 +210,6 @@ export default function TechnologiesSection() {
         overflow: 'hidden',
       }}
     >
-      {/* Marquee keyframes — injected once */}
       <style>{`
         @keyframes marquee-left {
           0% { transform: translateX(0); }
@@ -227,8 +235,8 @@ export default function TechnologiesSection() {
               display: 'inline-flex',
               alignItems: 'center',
               gap: '0.5rem',
-              background: 'rgba(34, 197, 94, 0.08)',
-              border: '1px solid rgba(34, 197, 94, 0.20)',
+              background: 'rgba(255, 90, 0, 0.08)',
+              border: '1px solid rgba(255, 90, 0, 0.20)',
               borderRadius: '100px',
               padding: '0.4rem 1rem',
             }}
@@ -238,7 +246,7 @@ export default function TechnologiesSection() {
                 width: '7px',
                 height: '7px',
                 borderRadius: '50%',
-                background: '#22C55E',
+                background: '#FF5A00',
                 display: 'inline-block',
               }}
             />
@@ -249,7 +257,7 @@ export default function TechnologiesSection() {
                 fontWeight: 700,
                 letterSpacing: '0.06em',
                 textTransform: 'uppercase',
-                color: '#22C55E',
+                color: '#FF5A00',
               }}
             >
               Technologies
@@ -264,15 +272,16 @@ export default function TechnologiesSection() {
           whileInView="visible"
           viewport={viewport}
           style={{
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display)",
             fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
             fontWeight: 800,
             color: 'var(--text-primary)',
             textAlign: 'center',
             marginBottom: '3rem',
+            letterSpacing: '-0.01em',
           }}
         >
-          Driving Excellence Through Technology
+          Driving Growth Through Modern Technology
         </motion.h2>
       </div>
 

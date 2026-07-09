@@ -11,7 +11,7 @@ export default function SectionHeading({
   className = '',
 }) {
   const alignClass = align === 'center' ? 'text-center items-center' : 'items-start';
-  const headingColor = light ? '#EAD7BB' : 'var(--text-primary)';
+  const headingColor = light ? '#FFF8F1' : 'var(--text-primary)';
   const ruleMargin = align === 'center' ? 'mx-auto' : '';
 
   return (
@@ -27,12 +27,13 @@ export default function SectionHeading({
       )}
       <h2
         style={{
-          fontFamily: "'Playfair Display', Georgia, serif",
+          fontFamily: "var(--font-display)",
           fontSize: 'clamp(1.75rem, 3vw, 2.75rem)',
-          fontWeight: 700,
+          fontWeight: 800,
           color: headingColor,
           lineHeight: 1.2,
           maxWidth: '600px',
+          letterSpacing: '-0.02em',
         }}
       >
         {title}
@@ -43,9 +44,10 @@ export default function SectionHeading({
           style={{
             marginTop: '1rem',
             fontSize: '1rem',
-            color: light ? 'rgba(234,215,187,0.75)' : 'var(--text-secondary)',
+            color: light ? 'rgba(255,248,241,0.7)' : 'var(--text-secondary)',
             maxWidth: '540px',
             lineHeight: 1.75,
+            fontFamily: 'var(--font-body)',
           }}
         >
           {subtitle}

@@ -70,21 +70,21 @@ export default function TermsConditions() {
       <section style={{
         minHeight: '35vh', display: 'flex', alignItems: 'flex-end',
         paddingTop: '80px',
-        background: 'linear-gradient(135deg, rgba(250,246,240,0.9) 0%, rgba(234,215,187,0.6) 100%)',
+        background: 'linear-gradient(to bottom, rgba(255, 90, 0, 0.05), transparent)',
         borderBottom: 'var(--border-subtle)',
       }}>
         <div className="container" style={{ padding: '3rem 1.5rem' }}>
           <motion.div variants={fadeUp} initial="hidden" animate="visible" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem', fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
-            <Link to="/" style={{ color: '#BC6C25' }}>Home</Link>
+            <Link to="/" style={{ color: 'var(--color-orange)' }}>Home</Link>
             <ChevronRight size={13} />
             <span>Terms & Conditions</span>
           </motion.div>
           <motion.h1 variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.1 }}
-            style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.75rem' }}>
+            style={{ fontFamily: "var(--font-display)", fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.75rem', letterSpacing: '-0.02em' }}>
             Terms & Conditions
           </motion.h1>
           <motion.p variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.2 }}
-            style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>
+            style={{ color: 'var(--text-muted)', fontSize: '0.875rem', fontFamily: 'var(--font-body)' }}>
             Last Updated: June 2025 · Effective Date: June 2025
           </motion.p>
         </div>
@@ -94,8 +94,8 @@ export default function TermsConditions() {
       <section className="section-py">
         <div className="container" style={{ maxWidth: '760px' }}>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewport}
-            style={{ background: 'rgba(74,55,40,0.04)', border: 'var(--border-subtle)', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem' }}>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9375rem', lineHeight: 1.75 }}>
+            style={{ background: 'rgba(255, 90, 0, 0.04)', border: 'var(--border-subtle)', borderRadius: '12px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem' }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9375rem', lineHeight: 1.75, fontFamily: 'var(--font-body)', margin: 0 }}>
               Please read these Terms and Conditions carefully before using The Computing Effect's website or engaging our services. These terms govern your relationship with us and outline both parties' rights and responsibilities.
             </p>
           </motion.div>
@@ -110,8 +110,8 @@ export default function TermsConditions() {
               transition={{ delay: i * 0.04 }}
               style={{ marginBottom: '2rem', paddingBottom: '2rem', borderBottom: 'var(--border-subtle)' }}
             >
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.2rem', color: 'var(--text-primary)', marginBottom: '0.875rem' }}>{title}</h2>
-              <p style={{ color: 'var(--text-secondary)', lineHeight: 1.85, fontSize: '0.9375rem' }}>{content}</p>
+              <h2 style={{ fontFamily: "var(--font-display)", fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.875rem' }}>{title}</h2>
+              <p style={{ color: 'var(--text-secondary)', lineHeight: 1.85, fontSize: '0.9375rem', fontFamily: 'var(--font-body)', margin: 0 }}>{content}</p>
             </motion.div>
           ))}
         </div>

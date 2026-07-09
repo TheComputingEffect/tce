@@ -1,52 +1,121 @@
 import React from 'react';
 import { useTheme } from '../../context/ThemeContext';
 
-// Hexagonal CE Monogram — Icon Mark
 export default function LogoIcon({ size = 40, className = '' }) {
   const { isDark } = useTheme();
-  const accent = isDark ? '#EAD7BB' : '#BC6C25';
-  const dark = isDark ? '#EAD7BB' : '#4A3728';
 
   return (
     <svg
       width={size}
       height={size}
-      viewBox="0 0 80 80"
+      viewBox="0 0 100 100"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
       aria-label="The Computing Effect Logo Icon"
     >
-      {/* Hexagon outer */}
+      <defs>
+        <linearGradient id="logo-ring-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#FF5A00" />
+          <stop offset="100%" stopColor="#D2861A" />
+        </linearGradient>
+      </defs>
+
+      {/* Ring: Orange-to-gold gradient ring, partially encircling (open on the right) */}
       <path
-        d="M40 4L72 22V58L40 76L8 58V22L40 4Z"
-        fill={isDark ? '#2A1F18' : accent}
-        stroke={accent}
-        strokeWidth="1.5"
-      />
-      {/* Hexagon inner ring */}
-      <path
-        d="M40 12L64 26V54L40 68L16 54V26L40 12Z"
-        fill="none"
-        stroke={isDark ? accent : '#FFFFFF'}
-        strokeWidth="1"
-        strokeOpacity="0.4"
-      />
-      {/* C letter */}
-      <path
-        d="M36 28C29.373 28 24 33.373 24 40C24 46.627 29.373 52 36 52C39.314 52 42.314 50.686 44.485 48.515"
-        stroke={isDark ? dark : '#FFFFFF'}
-        strokeWidth="4"
+        d="M 75 30 A 35 35 0 1 0 75 70"
+        stroke="url(#logo-ring-grad)"
+        strokeWidth="6.5"
         strokeLinecap="round"
         fill="none"
       />
-      {/* E letter */}
+
+      {/* "T": Dark espresso in light mode, cream/white in dark mode */}
+      {/* Top horizontal bar of T */}
       <path
-        d="M48 28H56M48 28V52M48 28H56M48 52H56M48 40H54"
-        stroke={isDark ? dark : '#FFFFFF'}
-        strokeWidth="4"
+        d="M 34 32 H 60"
+        stroke={isDark ? '#FFF8F1' : '#2B1200'}
+        strokeWidth="6"
         strokeLinecap="round"
-        strokeLinejoin="round"
+        fill="none"
+      />
+
+      {/* Stem of T splitting into circuit roots at bottom */}
+      <path
+        d="M 47 32 V 55"
+        stroke={isDark ? '#FFF8F1' : '#2B1200'}
+        strokeWidth="6"
+        strokeLinecap="round"
+        fill="none"
+      />
+
+      {/* Left split root */}
+      <path
+        d="M 47 55 C 47 62, 36 62, 36 68"
+        stroke={isDark ? '#FFF8F1' : '#2B1200'}
+        strokeWidth="5"
+        strokeLinecap="round"
+        fill="none"
+      />
+      <circle
+        cx="36"
+        cy="72"
+        r="4.5"
+        fill={isDark ? '#FFF8F1' : '#2B1200'}
+      />
+
+      {/* Center split root */}
+      <path
+        d="M 47 55 V 70"
+        stroke={isDark ? '#FFF8F1' : '#2B1200'}
+        strokeWidth="5"
+        strokeLinecap="round"
+        fill="none"
+      />
+      <circle
+        cx="47"
+        cy="74.5"
+        r="4.5"
+        fill={isDark ? '#FFF8F1' : '#2B1200'}
+      />
+
+      {/* Right split root */}
+      <path
+        d="M 47 55 C 47 62, 58 62, 58 68"
+        stroke={isDark ? '#FFF8F1' : '#2B1200'}
+        strokeWidth="5"
+        strokeLinecap="round"
+        fill="none"
+      />
+      <circle
+        cx="58"
+        cy="72"
+        r="4.5"
+        fill={isDark ? '#FFF8F1' : '#2B1200'}
+      />
+
+      {/* "E"-bar elements: Orange horizontal bars on the right side of the T stem */}
+      <path
+        d="M 54 39 H 64"
+        stroke="#FF5A00"
+        strokeWidth="5"
+        strokeLinecap="round"
+        fill="none"
+      />
+
+      <path
+        d="M 54 48 H 62"
+        stroke="#FF5A00"
+        strokeWidth="5"
+        strokeLinecap="round"
+        fill="none"
+      />
+
+      <path
+        d="M 54 57 H 64"
+        stroke="#FF5A00"
+        strokeWidth="5"
+        strokeLinecap="round"
         fill="none"
       />
     </svg>
