@@ -24,11 +24,11 @@ export default function WhatsAppButton() {
         width: '56px',
         height: '56px',
         borderRadius: '50%',
-        background: '#25D366',
+        background: '#FF5A00',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        boxShadow: '0 8px 24px rgba(37, 211, 102, 0.35)',
+        boxShadow: '0 8px 24px rgba(255, 90, 0, 0.35)',
         color: 'white',
         textDecoration: 'none',
       }}

@@ -21,15 +21,15 @@ export default function BackgroundCanvas() {
           position: 'absolute',
           inset: 0,
           background: isDark
-            ? 'radial-gradient(ellipse at 20% 50%, rgba(74,55,40,0.5) 0%, #1E150F 60%)'
-            : 'radial-gradient(ellipse at 20% 50%, #EAD7BB 0%, #FAF6F0 60%)',
+            ? 'radial-gradient(ellipse at 20% 50%, rgba(255, 90, 0, 0.04) 0%, #14090A 65%)'
+            : 'radial-gradient(ellipse at 20% 50%, rgba(255, 90, 0, 0.03) 0%, #FFF8F1 65%)',
           transition: 'background 0.4s ease',
         }}
       />
 
       {/* SVG hexagonal grid pattern */}
       <svg
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: isDark ? 0.06 : 0.12 }}
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: isDark ? 0.05 : 0.09 }}
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
@@ -37,7 +37,7 @@ export default function BackgroundCanvas() {
             <polygon
               points="30,2 56,16 56,44 30,58 4,44 4,16"
               fill="none"
-              stroke="#D4A373"
+              stroke={isDark ? '#FF5A00' : '#D2861A'}
               strokeWidth="0.8"
             />
           </pattern>
@@ -55,8 +55,8 @@ export default function BackgroundCanvas() {
           height: '500px',
           borderRadius: '50%',
           background: isDark
-            ? 'radial-gradient(circle, rgba(188,108,37,0.08) 0%, transparent 70%)'
-            : 'radial-gradient(circle, rgba(188,108,37,0.06) 0%, transparent 70%)',
+            ? 'radial-gradient(circle, rgba(255,90,0,0.04) 0%, transparent 70%)'
+            : 'radial-gradient(circle, rgba(255,90,0,0.03) 0%, transparent 70%)',
           filter: 'blur(40px)',
         }}
       />
@@ -69,8 +69,8 @@ export default function BackgroundCanvas() {
           height: '420px',
           borderRadius: '50%',
           background: isDark
-            ? 'radial-gradient(circle, rgba(212,163,115,0.06) 0%, transparent 70%)'
-            : 'radial-gradient(circle, rgba(212,163,115,0.08) 0%, transparent 70%)',
+            ? 'radial-gradient(circle, rgba(210,134,26,0.04) 0%, transparent 70%)'
+            : 'radial-gradient(circle, rgba(210,134,26,0.03) 0%, transparent 70%)',
           filter: 'blur(50px)',
         }}
       />
@@ -83,8 +83,8 @@ export default function BackgroundCanvas() {
           height: '300px',
           borderRadius: '50%',
           background: isDark
-            ? 'radial-gradient(circle, rgba(74,55,40,0.12) 0%, transparent 70%)'
-            : 'radial-gradient(circle, rgba(234,215,187,0.5) 0%, transparent 70%)',
+            ? 'radial-gradient(circle, rgba(255,90,0,0.02) 0%, transparent 70%)'
+            : 'radial-gradient(circle, rgba(210,134,26,0.04) 0%, transparent 70%)',
           filter: 'blur(60px)',
           transform: 'translateY(-50%)',
         }}

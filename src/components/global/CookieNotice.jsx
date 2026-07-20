@@ -27,21 +27,21 @@ export default function CookieNotice() {
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
         >
-          <Cookie size={20} color="#BC6C25" style={{ flexShrink: 0 }} />
-          <p style={{ color: 'var(--text-primary)', fontSize: '0.875rem', flex: 1, minWidth: 200 }}>
+          <Cookie size={20} color="var(--color-orange)" style={{ flexShrink: 0 }} />
+          <p style={{ color: 'var(--text-primary)', fontSize: '0.875rem', flex: 1, minWidth: 200, fontFamily: 'var(--font-body)' }}>
             We use cookies to enhance your experience and understand how you use our site.
           </p>
           <div style={{ display: 'flex', gap: '0.625rem', flexShrink: 0 }}>
             <Link
               to="/privacy-policy"
-              style={{ fontSize: '0.8125rem', color: '#BC6C25', textDecoration: 'underline' }}
+              style={{ fontSize: '0.8125rem', color: 'var(--color-orange)', textDecoration: 'underline', fontFamily: 'var(--font-body)', fontWeight: 600 }}
             >
               Learn More
             </Link>
             <button
               onClick={accept}
               style={{
-                background: '#BC6C25',
+                background: 'var(--color-orange)',
                 color: '#fff',
                 border: 'none',
                 borderRadius: '6px',
@@ -49,8 +49,11 @@ export default function CookieNotice() {
                 fontSize: '0.8125rem',
                 fontWeight: 600,
                 cursor: 'pointer',
-                fontFamily: "'Inter', sans-serif",
+                fontFamily: "var(--font-body)",
+                transition: 'background 0.2s ease',
               }}
+              onMouseEnter={e => e.currentTarget.style.background = 'var(--color-orange-dark)'}
+              onMouseLeave={e => e.currentTarget.style.background = 'var(--color-orange)'}
             >
               Accept
             </button>

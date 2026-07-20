@@ -5,78 +5,96 @@ import { ArrowRight, Calendar } from 'lucide-react';
 import { fadeUp, viewport } from '../../utils/variants';
 
 export default function ConsultationBanner({ 
-  headline = "Ready to Build Something Extraordinary?",
-  subtext = "Let's turn your vision into reality. Our team is ready to help you create something remarkable.",
+  headline = "Ready to Build Something Great?",
+  subtext = "Let's turn your vision into operational reality. Work directly with our developers to review your database schemas and map out integrations.",
   primaryLabel = "Start Your Project",
-  secondaryLabel = "Schedule a Free Call",
+  secondaryLabel = "Schedule Scoping Call",
   primaryTo = "/contact",
 }) {
   return (
-    <section className="dark-section">
-      <div className="container" style={{ padding: '5rem 1.5rem', textAlign: 'center', position: 'relative', zIndex: 1 }}>
+    <section style={{ padding: '6rem 0', background: '#14090A' }}>
+      <div className="container">
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
+          style={{
+            background: 'var(--bg-card)',
+            border: '1px solid rgba(255, 90, 0, 0.08)',
+            borderRadius: '32px',
+            padding: '5rem 2.5rem',
+            textAlign: 'center',
+            position: 'relative',
+            overflow: 'hidden',
+          }}
         >
-          <h2
-            style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)',
-              color: '#EAD7BB',
-              marginBottom: '1rem',
-              lineHeight: 1.2,
-            }}
-          >
-            {headline}
-          </h2>
-          <p style={{ color: '#D4A373', fontSize: '1.0625rem', marginBottom: '2rem', maxWidth: '500px', margin: '0 auto 2rem' }}>
-            {subtext}
-          </p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link
-              to={primaryTo}
+          <div style={{ position: 'absolute', width: '250px', height: '250px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,90,0,0.04) 0%, transparent 70%)', top: '-50px', left: '-50px' }} />
+          
+          <div style={{ position: 'relative', zIndex: 5, maxWidth: '640px', margin: '0 auto' }}>
+            <h2
               style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                background: '#BC6C25',
-                color: '#fff',
-                fontFamily: "'Inter', sans-serif",
-                fontWeight: 600,
-                fontSize: '0.9375rem',
-                padding: '0.8rem 1.75rem',
-                borderRadius: '8px',
-                boxShadow: '0 4px 16px rgba(188,108,37,0.30)',
-                textDecoration: 'none',
-                transition: 'all 0.2s ease',
+                fontFamily: "var(--font-display)",
+                fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)',
+                color: '#FFF8F1',
+                marginBottom: '1rem',
+                lineHeight: 1.2,
+                fontWeight: 800,
+                letterSpacing: '-0.02em',
               }}
             >
-              <ArrowRight size={16} />
-              {primaryLabel}
-            </Link>
-            <Link
-              to="/contact"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                background: 'transparent',
-                color: '#EAD7BB',
-                fontFamily: "'Inter', sans-serif",
-                fontWeight: 600,
-                fontSize: '0.9375rem',
-                padding: '0.8rem 1.75rem',
-                borderRadius: '8px',
-                border: '1.5px solid rgba(234,215,187,0.4)',
-                textDecoration: 'none',
-                transition: 'all 0.2s ease',
-              }}
-            >
-              <Calendar size={16} />
-              {secondaryLabel}
-            </Link>
+              {headline}
+            </h2>
+            <p style={{ color: 'rgba(255,248,241,0.65)', fontSize: '0.95rem', marginBottom: '2.25rem', lineHeight: 1.6, fontFamily: 'var(--font-body)' }}>
+              {subtext}
+            </p>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <Link
+                to={primaryTo}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  background: 'var(--color-orange)',
+                  color: '#fff',
+                  fontFamily: "var(--font-body)",
+                  fontWeight: 700,
+                  fontSize: '0.85rem',
+                  padding: '0.8rem 1.75rem',
+                  borderRadius: '12px',
+                  boxShadow: '0 8px 24px rgba(255, 90, 0, 0.2)',
+                  textDecoration: 'none',
+                  transition: 'transform 0.2s',
+                }}
+                onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
+                onMouseLeave={e => e.currentTarget.style.transform = 'none'}
+              >
+                {primaryLabel} <ArrowRight size={14} />
+              </Link>
+              <Link
+                to="/contact"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  background: 'rgba(255, 248, 241, 0.02)',
+                  color: '#FFF8F1',
+                  fontFamily: "var(--font-body)",
+                  fontWeight: 700,
+                  fontSize: '0.85rem',
+                  padding: '0.8rem 1.75rem',
+                  borderRadius: '12px',
+                  border: '1px solid rgba(255,248,241,0.1)',
+                  textDecoration: 'none',
+                  transition: 'background 0.2s',
+                }}
+                onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,248,241,0.08)'}
+                onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,248,241,0.02)'}
+              >
+                <Calendar size={14} color="var(--color-orange)" />
+                {secondaryLabel}
+              </Link>
+            </div>
           </div>
         </motion.div>
       </div>

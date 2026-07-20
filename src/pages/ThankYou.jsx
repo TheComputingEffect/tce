@@ -31,8 +31,8 @@ export default function ThankYou() {
           width: '100px',
           height: '100px',
           borderRadius: '50%',
-          background: 'rgba(188,108,37,0.10)',
-          border: '2px solid rgba(188,108,37,0.2)',
+          background: 'rgba(255, 90, 0, 0.08)',
+          border: '2px solid rgba(255, 90, 0, 0.15)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -48,7 +48,7 @@ export default function ThankYou() {
         >
           <motion.path
             d="M14 26 L22 34 L38 18"
-            stroke="#BC6C25"
+            stroke="var(--color-orange)"
             strokeWidth="3.5"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -67,11 +67,12 @@ export default function ThankYou() {
       >
         <h1
           style={{
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display)",
             fontSize: 'clamp(2rem, 4vw, 3rem)',
-            fontWeight: 700,
+            fontWeight: 800,
             color: 'var(--text-primary)',
             marginBottom: '1rem',
+            letterSpacing: '-0.02em',
           }}
         >
           Message Received!
@@ -83,6 +84,7 @@ export default function ThankYou() {
             maxWidth: '480px',
             margin: '0 auto 1rem',
             lineHeight: 1.8,
+            fontFamily: 'var(--font-body)',
           }}
         >
           Thank you for reaching out. We've received your message and are excited to connect with you.
@@ -94,15 +96,15 @@ export default function ThankYou() {
             display: 'inline-flex',
             alignItems: 'center',
             gap: '0.5rem',
-            background: 'rgba(188,108,37,0.08)',
-            border: '1px solid rgba(188,108,37,0.2)',
+            background: 'rgba(255, 90, 0, 0.06)',
+            border: '1px solid rgba(255, 90, 0, 0.15)',
             borderRadius: '100px',
             padding: '0.4rem 1rem',
             marginBottom: '2.5rem',
           }}
         >
           <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#22C55E' }} />
-          <span style={{ fontSize: '0.8125rem', color: '#BC6C25', fontWeight: 500 }}>
+          <span style={{ fontSize: '0.8125rem', color: 'var(--color-orange)', fontWeight: 600 }}>
             Typically responding within 24 hours on business days
           </span>
         </div>
@@ -121,7 +123,7 @@ export default function ThankYou() {
             textAlign: 'left',
           }}
         >
-          <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1rem', color: 'var(--text-primary)', marginBottom: '1rem' }}>
+          <h3 style={{ fontFamily: "var(--font-display)", fontSize: '1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '1rem' }}>
             What happens next?
           </h3>
           {[
@@ -133,13 +135,13 @@ export default function ThankYou() {
             <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', marginBottom: '0.625rem' }}>
               <div style={{
                 width: '22px', height: '22px', borderRadius: '50%',
-                background: '#BC6C25', color: '#fff',
+                background: 'var(--color-orange)', color: '#fff',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 fontSize: '0.7rem', fontWeight: 700, flexShrink: 0,
               }}>
                 {i + 1}
               </div>
-              <span style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>{step}</span>
+              <span style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.5, fontFamily: 'var(--font-body)' }}>{step}</span>
             </div>
           ))}
         </div>

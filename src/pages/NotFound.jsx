@@ -29,13 +29,14 @@ export default function NotFound() {
       >
         <div
           style={{
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display)",
             fontSize: 'clamp(6rem, 15vw, 10rem)',
-            fontWeight: 700,
-            color: '#BC6C25',
+            fontWeight: 800,
+            color: 'var(--color-orange)',
             lineHeight: 1,
             marginBottom: '0',
-            opacity: 0.9,
+            opacity: 0.95,
+            letterSpacing: '-0.03em',
           }}
         >
           404
@@ -50,16 +51,16 @@ export default function NotFound() {
         style={{ marginBottom: '1.5rem' }}
       >
         <svg viewBox="0 0 280 60" width="280" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 30 L80 30" stroke="#BC6C25" strokeWidth="2" strokeLinecap="round" strokeOpacity="0.5"/>
-          <circle cx="80" cy="30" r="5" fill="rgba(188,108,37,0.3)" stroke="#BC6C25" strokeWidth="1.5" strokeOpacity="0.5"/>
-          <path d="M80 30 L100 10 L120 50 L140 10 L160 50 L168 30" stroke="#BC6C25" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.4" strokeDasharray="4 4"/>
-          <circle cx="168" cy="30" r="5" fill="rgba(188,108,37,0.3)" stroke="#BC6C25" strokeWidth="1.5" strokeOpacity="0.5"/>
-          <path d="M168 30 L200 30" stroke="#BC6C25" strokeWidth="2" strokeLinecap="round" strokeOpacity="0.3" strokeDasharray="4 4"/>
-          <circle cx="200" cy="30" r="3" fill="#BC6C25" opacity="0.3"/>
+          <path d="M20 30 L80 30" stroke="#FF5A00" strokeWidth="2" strokeLinecap="round" strokeOpacity="0.5"/>
+          <circle cx="80" cy="30" r="5" fill="rgba(255,90,0,0.2)" stroke="#FF5A00" strokeWidth="1.5" strokeOpacity="0.5"/>
+          <path d="M80 30 L100 10 L120 50 L140 10 L160 50 L168 30" stroke="#FF5A00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.4" strokeDasharray="4 4"/>
+          <circle cx="168" cy="30" r="5" fill="rgba(255,90,0,0.2)" stroke="#FF5A00" strokeWidth="1.5" strokeOpacity="0.5"/>
+          <path d="M168 30 L200 30" stroke="#FF5A00" strokeWidth="2" strokeLinecap="round" strokeOpacity="0.3" strokeDasharray="4 4"/>
+          <circle cx="200" cy="30" r="3" fill="#FF5A00" opacity="0.3"/>
           {/* Broken section */}
-          <path d="M210 20 L220 40" stroke="#BC6C25" strokeWidth="2" strokeLinecap="round" strokeOpacity="0.6"/>
-          <path d="M230 20 L240 40" stroke="#BC6C25" strokeWidth="2" strokeLinecap="round" strokeOpacity="0.4"/>
-          <path d="M250 30 L260 30" stroke="#BC6C25" strokeWidth="2" strokeLinecap="round" strokeOpacity="0.3"/>
+          <path d="M210 20 L220 40" stroke="#FF5A00" strokeWidth="2" strokeLinecap="round" strokeOpacity="0.6"/>
+          <path d="M230 20 L240 40" stroke="#FF5A00" strokeWidth="2" strokeLinecap="round" strokeOpacity="0.4"/>
+          <path d="M250 30 L260 30" stroke="#FF5A00" strokeWidth="2" strokeLinecap="round" strokeOpacity="0.3"/>
         </svg>
       </motion.div>
 
@@ -70,10 +71,11 @@ export default function NotFound() {
       >
         <h2
           style={{
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display)",
             fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)',
             color: 'var(--text-primary)',
             marginBottom: '0.875rem',
+            fontWeight: 700,
           }}
         >
           Page Not Found
